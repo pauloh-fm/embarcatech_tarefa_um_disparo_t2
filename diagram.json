@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "author": "Paulo H F M",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-pi-pico-w",
+      "id": "pico",
+      "top": 6.35,
+      "left": 99.55,
+      "attrs": { "builder": "pico-sdk" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_red",
+      "top": 34.8,
+      "left": -82.6,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_yellow",
+      "top": 92.4,
+      "left": -82.6,
+      "attrs": { "color": "yellow" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_green",
+      "top": 150,
+      "left": -82.6,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "res_red",
+      "top": 119.45,
+      "left": -1.4,
+      "rotate": 180,
+      "attrs": { "value": "330" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "res_yellow",
+      "top": 138.65,
+      "left": -11,
+      "rotate": 180,
+      "attrs": { "value": "330" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "res_green",
+      "top": 167.15,
+      "left": -9.6,
+      "rotate": 180,
+      "attrs": { "value": "330" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": 25.4,
+      "left": 19.2,
+      "rotate": 180,
+      "attrs": { "color": "green" }
+    }
+  ],
+  "connections": [
+    [ "pico:GP11", "res_red:1", "red", [] ],
+    [ "pico:GP12", "res_yellow:1", "yellow", [] ],
+    [ "pico:GP13", "res_green:1", "green", [] ],
+    [ "res_yellow:2", "led_yellow:A", "gold", [] ],
+    [ "res_green:2", "led_green:A", "green", [] ],
+    [ "led_red:C", "pico:GND.2", "#8f4814", [ "v0" ] ],
+    [ "led_green:C", "pico:GND.2", "#8f4814", [ "v0", "h-18.8", "v-105.6" ] ],
+    [ "led_yellow:C", "pico:GND.2", "#8f4814", [ "v0", "h-18.8", "v-48" ] ],
+    [ "led_red:A", "res_red:2", "red", [ "v0", "h57.6" ] ],
+    [ "btn1:1.l", "pico:GP5", "green", [ "h0" ] ],
+    [ "btn1:2.l", "pico:GND.1", "black", [ "h0" ] ]
+  ],
+  "dependencies": {}
+}
