@@ -58,7 +58,7 @@ void atualizar_leds() {
         case 3:
             temporizador_executando = false;  // Finaliza o temporizador
             estado_leds = 0;
-            printf("Sequência concluída.\n");
+            printf("Sequência concluída. Aperte o botão A para iniciar novamente.\n");
             return;
     }
 
@@ -77,12 +77,12 @@ int main() {
     init_leds();       // Inicializa os LEDs
     init_botoes(botao_a);  // Inicializa o botão
 
-    printf("Sistema iniciado. Aperte o botão para iniciar a sequência.\n");
+    printf("Sistema iniciado. Aperte o botão A para iniciar a sequência.\n");
 
     while (true) {
         // Verifica se o botão foi pressionado e o temporizador não está em execução
         if (!temporizador_executando && button_debounce(botao_a)) {
-            printf("Botão pressionado! Iniciando sequência de LEDs.\n");
+            printf("Botão A pressionado! Iniciando sequência de LEDs.\n");
 
             // Liga todos os LEDs e inicia o temporizador
             gpio_put(LED_BLUE_PIN, 1);
