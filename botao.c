@@ -9,7 +9,7 @@ const uint botao_a = 5;
 void init_botoes(uint botao_pin) {
     gpio_init(botao_pin);
     gpio_set_dir(botao_pin, GPIO_IN);    // Configura o pino como entrada
-    gpio_pull_down(botao_pin);           // Habilita o pull-down interno
+    gpio_pull_up(botao_pin);           // Habilita o pull-down interno
 }
 
 // Função para verificar se o botão foi pressionado (com debounce)
@@ -18,7 +18,7 @@ bool button_debounce(uint botao_pin) {
     uint32_t current_time = to_ms_since_boot(get_absolute_time());
 
     // Verifica se o botão foi pressionado (nível alto em pull-down)
-    if (gpio_get(botao_pin)) {
+    if (gpio_get(botao_pin)== 0) {
         if (current_time - last_time > 200) {  // Delay de debounce de 200ms
             last_time = current_time;
             return true;
